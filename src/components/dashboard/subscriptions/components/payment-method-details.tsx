@@ -13,6 +13,7 @@ const PaymentMethodLabels: Partial<Record<PaddlePaymentMethodDetails['type'], st
   bancontact: 'Bancontact',
   offline: 'Offline',
   unknown: 'Unknown',
+  korea_local: 'Korea Local',
 };
 
 interface Props {
