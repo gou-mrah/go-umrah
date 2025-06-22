@@ -1,7 +1,8 @@
 import { PaymentMethodDetails as PaddlePaymentMethodDetails } from '@paddle/paddle-node-sdk';
 import { CreditCard } from 'lucide-react';
 
-const PaymentMethodLabels: Record<PaddlePaymentMethodDetails['type'], string> = {
+const PaymentMethodLabels: Partial<Record<PaddlePaymentMethodDetails['type'], string>>
+ = {
   card: 'Card',
   alipay: 'Alipay',
   wire_transfer: 'Wire Transfer',
