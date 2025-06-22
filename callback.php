@@ -1,21 +1,21 @@
-// callback.php
-<?php
-require_once 'config.php';
+// ملف callback.php (أو ما يعادله في مسارك)
+$client = new Google_Client();
+// ... إعدادات العميل
 
 if(isset($_GET['code'])) {
-    $token = $googleClient->fetchAccessTokenWithAuthCode($_GET['code']);
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     
     if(!isset($token['error'])) {
-        $googleClient->setAccessToken($token);
-        $google_service = new Google_Service_Oauth2($googleClient);
-        $data = $google_service->userinfo->get();
+        // معالجة تسجيل الدخول الناجح
+        $client->setAccessToken($token);
+        $google_service = new Google_Service_Oauth2($client);
+        $user_data = $google_service->userinfo->get();
         
-        // معالجة بيانات المستخدم هنا
-        $_SESSION['user_email'] = $data['email'];
-        $_SESSION['user_name'] = $data['name'];
-        
-        header('Location: dashboard.php');
+        // ... حفظ بيانات المستخدم في الجلسة/قاعدة البيانات
+        header('Location: /dashboard'); // توجيه بعد التسجيل
         exit();
+    } else {
+        // معالجة الخطأ
+        die("Error: " . $token['error']);
     }
 }
-?>
