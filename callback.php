@@ -1,21 +1,25 @@
-// ملف callback.php (أو ما يعادله في مسارك)
+// في مسار /auth/google/callback
 $client = new Google_Client();
-// ... إعدادات العميل
+// ... التكوين السابق
 
 if(isset($_GET['code'])) {
-    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    
-    if(!isset($token['error'])) {
-        // معالجة تسجيل الدخول الناجح
+    try {
+        $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
         $client->setAccessToken($token);
-        $google_service = new Google_Service_Oauth2($client);
-        $user_data = $google_service->userinfo->get();
         
-        // ... حفظ بيانات المستخدم في الجلسة/قاعدة البيانات
-        header('Location: /dashboard'); // توجيه بعد التسجيل
-        exit();
-    } else {
-        // معالجة الخطأ
-        die("Error: " . $token['error']);
+        $oauth = new Google_Service_Oauth2($client);
+        $user = $oauth->userinfo->get();
+        
+        // معالجة بيانات المستخدم
+        $_SESSION['google_user'] = [
+            'email' => $user->email,
+            'name' => $user->name
+        ];
+        
+        header('Location: /dashboard');
+    } catch(Exception $e) {
+        // تسجيل الخطأ
+        error_log('Google Auth Error: '.$e->getMessage());
+        header('Location: /login?error=google_auth_failed');
     }
 }
