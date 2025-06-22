@@ -3,21 +3,7 @@ import { CreditCard } from 'lucide-react';
 
 type AllPaddlePaymentTypes = PaddlePaymentMethodDetails['type'];
 
-type AllowedPaymentMethodType = Extract<
-  AllPaddlePaymentTypes,
-  | 'card'
-  | 'alipay'
-  | 'wire_transfer'
-  | 'apple_pay'
-  | 'google_pay'
-  | 'paypal'
-  | 'ideal'
-  | 'bancontact'
-  | 'offline'
-  | 'unknown'
->;
-
-const PaymentMethodLabels: Record<AllowedPaymentMethodType, string> = {
+const PaymentMethodLabels: Partial<Record<AllPaddlePaymentTypes, string>> = {
   card: 'Card',
   alipay: 'Alipay',
   wire_transfer: 'Wire Transfer',
@@ -31,7 +17,7 @@ const PaymentMethodLabels: Record<AllowedPaymentMethodType, string> = {
 };
 
 interface Props {
-  type: AllowedPaymentMethodType;
+  type: AllPaddlePaymentTypes;
   card?: PaddlePaymentMethodDetails['card'];
 }
 
@@ -45,5 +31,6 @@ export function PaymentMethodDetails({ type, card }: Props) {
     );
   }
 
-  return <span className="text-base text-secondary leading-4">{PaymentMethodLabels[type]}</span>;
+  // تأكد أن هناك تسمية للنوع الحالي، وإلا اعرض '-'
+  return <span className="text-base text-secondary leading-4">{PaymentMethodLabels[type] ?? '-'}</span>;
 }
