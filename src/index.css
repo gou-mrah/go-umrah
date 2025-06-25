@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #0d7e95;
+  --primary-dark: #0a6b82;
+  --gold: #FFD700;
+  --background: 210 40% 98%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 192 80% 32%; 
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 192 80% 32%; 
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Roboto', 'Noto Kufi Arabic', sans-serif;
+  direction: rtl;
+}
+
+html[lang="ar"] body {
+  font-family: 'Noto Kufi Arabic', 'Roboto', sans-serif;
+}
+
+html[lang="en"] body {
+  font-family: 'Roboto', 'Noto Kufi Arabic', sans-serif;
+}
+
+.font-arabic {
+  font-family: 'Noto Kufi Arabic', 'Roboto', sans-serif;
+}
+
+.font-english {
+  font-family: 'Roboto', 'Noto Kufi Arabic', sans-serif;
+}
+
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--primary-dark);
+}
+.hover\:bg-primary\/90:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+.bg-gold {
+  background-color: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.1'%3E%3Cpath d='M40 0L50 10L40 20L30 10zM10 30L20 40L10 50L0 40zM70 30L80 40L70 50L60 40zM40 60L50 70L40 80L30 70z'/%3E%3Crect width='80' height='80'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.islamic-pattern-light {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230d7e95' fill-opacity='0.03'%3E%3Cpath d='M50 0L61.8 18.19L80.9 22.36L70.24 37.64L72.36 58.82L50 50L27.64 58.82L29.76 37.64L19.1 22.36L38.2 18.19L50 0zM50 100L38.2 81.81L19.1 77.64L29.76 62.36L27.64 41.18L50 50L72.36 41.18L70.24 62.36L80.9 77.64L61.8 81.81L50 100z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(13, 126, 149, 0.2);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 126, 149, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.navbar-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.service-icon {
+  background-color: var(--primary-color);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  transition: all 0.3s ease;
+}
+
+.service-icon:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(13, 126, 149, 0.3);
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem; 
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem; 
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hero-bg {
+  background-color: var(--primary-color);
+}
